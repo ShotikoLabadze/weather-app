@@ -15,6 +15,7 @@ function App() {
         setData(response.data);
         console.log(response.data);
       });
+      setLocation("");
     }
   };
 
@@ -29,20 +30,17 @@ function App() {
           type="text"
         />
       </div>
-      <div className="location">
-        <p>London</p>
-      </div>
-      <div className="temp">
-        <h1>60F</h1>
-      </div>
-      <div className="description">
-        <p>Clouds</p>
-      </div>
-      <div className="feels">
-        <p>65F</p>
-      </div>
-      <div className="humidity">
-        <p>20%</p>
+
+      <div className="weather-container">
+        <div className="top-part">
+          {data.main ? <h1>{data.main.temp}°F</h1> : null}
+          <div className="temp-low-high">
+            {data.weather ? <h1>{data.weather.description}</h1> : null}
+            {data.main ? <h1>{data.main.temp_max}°F</h1> : null}
+            {data.main ? <h1>{data.main.temp_min}°F</h1> : null}
+          </div>
+        </div>
+        <h2>{data.name}</h2>
       </div>
     </div>
   );
